@@ -18,9 +18,27 @@ interface CoffeCardProps {
 }
 
 export function CoffeCard({ coffee }: CoffeCardProps) {
-  const { coffees } = useContext(CoffeeContext)
+  const {
+    coffees,
+    coffeesCart,
+    addItemToCart,
+    incrementItemAmount,
+    decrementItemAmount,
+  } = useContext(CoffeeContext)
 
   const priceCoffeFormatted = numeral(coffee.price).format('0,0.00')
+
+  function handleAddToCart() {
+    addItemToCart(coffee)
+  }
+
+  function handleIncrementItemAmount(id: number) {
+    incrementItemAmount(id)
+  }
+
+  function handleDecrementItemAmount(id: number) {
+    decrementItemAmount(id)
+  }
 
   return (
     <CoffeCardContainer>
@@ -43,14 +61,14 @@ export function CoffeCard({ coffee }: CoffeCardProps) {
         </div>
 
         <div className="cart">
-          <MinusButton>
+          <MinusButton onClick={() => handleDecrementItemAmount(coffee.id)}>
             <Minus />
           </MinusButton>
           <span>{coffee.amount}</span>
-          <PlusButton>
+          <PlusButton onClick={() => incrementItemAmount(coffee.id)}>
             <Plus />
           </PlusButton>
-          <CartButton>
+          <CartButton onClick={() => handleAddToCart()}>
             <ShoppingCartSimple weight="fill" />
           </CartButton>
         </div>
