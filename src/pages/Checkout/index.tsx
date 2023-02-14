@@ -1,3 +1,5 @@
+import { DeliveryForm } from './DeliveryForm'
+
 export function Checkout() {
-  return <h1>Checkout</h1>
+  return <DeliveryForm />
 }
