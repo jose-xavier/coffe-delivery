@@ -15,6 +15,7 @@ export function Header() {
           <CartButton>
             <ShoppingCart size={22} weight="fill" />
           </CartButton>
+          <a href="http://127.0.0.1:5173/checkout">link</a>
         </div>
       </HeaderContent>
     </HeaderContainer>

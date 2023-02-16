@@ -18,13 +18,8 @@ interface CoffeCardProps {
 }
 
 export function CoffeCard({ coffee }: CoffeCardProps) {
-  const {
-    coffees,
-    coffeesCart,
-    addItemToCart,
-    incrementItemAmount,
-    decrementItemAmount,
-  } = useContext(CoffeeContext)
+  const { addItemToCart, incrementItemAmount, decrementItemAmount } =
+    useContext(CoffeeContext)
 
   const priceCoffeFormatted = numeral(coffee.price).format('0,0.00')
 

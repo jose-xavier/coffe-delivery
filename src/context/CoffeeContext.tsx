@@ -1,5 +1,11 @@
 /* eslint-disable no-fallthrough */
-import { createContext, ReactNode, useReducer, useState } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useEffect,
+  useReducer,
+  useState,
+} from 'react'
 import { Coffee, coffeesList } from '../data/coffes'
 
 interface CoffeeContextProviderProps {
@@ -24,10 +30,30 @@ export const CoffeeContext = createContext({} as CoffeeContextTypes)
 export function CoffeeContextProvider({
   children,
 }: CoffeeContextProviderProps) {
-  const [coffeesState, dispatch] = useReducer(coffesReducer, {
-    coffees: coffeesList,
-    coffeesCart: [],
-  })
+  const [coffeesState, dispatch] = useReducer(
+    coffesReducer,
+    {
+      coffees: coffeesList,
+      coffeesCart: [],
+    },
+    () => {
+      const storedStateAsJSON = localStorage.getItem(
+        '@coffee-delivery:coffee-state-1.0.0',
+      )
+
+      if (storedStateAsJSON) {
+        return JSON.parse(storedStateAsJSON)
+      }
+    },
+  )
+
+  const { coffeesCart, coffees } = coffeesState
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(coffeesState)
+
+    localStorage.setItem('@coffee-delivery:coffee-state-1.0.0', stateJSON)
+  }, [coffeesState])
 
   function coffesReducer(state: CoffeesState, action: any) {
     switch (action.type) {
@@ -113,10 +139,6 @@ export function CoffeeContextProvider({
       },
     })
   }
-
-  const { coffeesCart, coffees } = coffeesState
-
-  console.log(coffeesCart)
 
   return (
     <CoffeeContext.Provider
