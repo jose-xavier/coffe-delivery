@@ -3,8 +3,11 @@ import styled from 'styled-components'
 export const CoffeeItemContainer = styled.div`
   max-width: 23rem;
   display: flex;
+
   gap: 1.25rem;
-  padding: 0.5rem 0.25rem;
+  padding: 1.5rem 0;
+
+  border-bottom: 2px solid ${(props) => props.theme.colors['gray-300']};
 
   img {
     height: 4rem;
@@ -19,6 +22,15 @@ export const CoffeeItemContent = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    p {
+      font-size: 1rem;
+      color: ${(props) => props.theme.colors['gray-700']};
+    }
+
+    strong {
+      font-family: 'Roboto';
+    }
   }
 
   .info-quantity {
@@ -33,6 +45,8 @@ export const CoffeeItemContent = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      background: ${(props) => props.theme.colors['gray-400']};
+      border-radius: 6px;
     }
 
     button {
@@ -43,6 +57,8 @@ export const CoffeeItemContent = styled.div`
       align-items: center;
       gap: 0.25rem;
       color: ${(props) => props.theme.colors['gray-700']};
+      background: ${(props) => props.theme.colors['gray-400']};
+      border-radius: 6px;
 
       .icon-color {
         color: ${(props) => props.theme.colors['purple-300']};

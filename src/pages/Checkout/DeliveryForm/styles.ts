@@ -30,8 +30,9 @@ export const DeliveryFormContainer = styled.main`
 `
 
 export const AdressInfo = styled.div`
-  padding: 2.5rem;
+  padding: 2.5rem 0;
   margin-top: 1rem;
+  padding: 2.5rem;
   background: ${(props) => props.theme.colors['gray-200']};
   border-radius: 6px;
 
@@ -90,6 +91,11 @@ export const AdressInfo = styled.div`
 `
 
 export const PaymentInfo = styled.div`
+  border-radius: 6px;
+  margin-top: 0.75rem;
+  padding: 2.5rem;
+  background: ${(props) => props.theme.colors['gray-200']};
+
   .header-payment {
     display: flex;
     gap: 0.5rem;
@@ -119,7 +125,7 @@ export const PaymentInfo = styled.div`
 export const ButtonPayment = styled.button`
   width: 11.125rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.75rem;
   align-items: center;
   padding: 1rem;

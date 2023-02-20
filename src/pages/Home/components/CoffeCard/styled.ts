@@ -91,6 +91,14 @@ export const BuyCard = styled.div`
       font-weight: 400;
     }
   }
+
+  button {
+    cursor: pointer;
+  }
+
+  .buttom-buy:hover {
+    background-color: ${(props) => props.theme.colors['purple-300']};
+  }
 `
 
 export const CartButton = styled.button`

@@ -12,27 +12,35 @@ import { Coffee } from '../../../../data/coffes'
 import { useContext } from 'react'
 import { CoffeeContext } from '../../../../context/CoffeeContext'
 import { Minus, Plus, ShoppingCartSimple } from 'phosphor-react'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 interface CoffeCardProps {
   coffee: Coffee
 }
 
 export function CoffeCard({ coffee }: CoffeCardProps) {
-  const { addItemToCart, incrementItemAmount, decrementItemAmount } =
-    useContext(CoffeeContext)
+  const {
+    addCoffeeToCart,
+    incrementCoffeeAmount,
+    decrementCoffeeAmount,
+    resetCoffeeQuantity,
+  } = useContext(CoffeeContext)
 
   const priceCoffeFormatted = numeral(coffee.price).format('0,0.00')
 
-  function handleAddToCart() {
-    addItemToCart(coffee)
+  function handleAddToCart(id: number) {
+    addCoffeeToCart(coffee)
+    resetCoffeeQuantity(id)
+    toast.success('Item adicionado ao carrinho')
   }
 
-  function handleIncrementItemAmount(id: number) {
-    incrementItemAmount(id)
+  function handleIncrementItemAmount(id: number, option: 'cart' | 'list') {
+    incrementCoffeeAmount(id, option)
   }
 
-  function handleDecrementItemAmount(id: number) {
-    decrementItemAmount(id)
+  function handleDecrementItemAmount(id: number, option: 'cart' | 'list') {
+    decrementCoffeeAmount(id, option)
   }
 
   return (
@@ -56,14 +64,21 @@ export function CoffeCard({ coffee }: CoffeCardProps) {
         </div>
 
         <div className="cart">
-          <MinusButton onClick={() => handleDecrementItemAmount(coffee.id)}>
+          <MinusButton
+            onClick={() => handleDecrementItemAmount(coffee.id, 'list')}
+          >
             <Minus />
           </MinusButton>
           <span>{coffee.amount}</span>
-          <PlusButton onClick={() => incrementItemAmount(coffee.id)}>
+          <PlusButton
+            onClick={() => handleIncrementItemAmount(coffee.id, 'list')}
+          >
             <Plus />
           </PlusButton>
-          <CartButton onClick={() => handleAddToCart()}>
+          <CartButton
+            className="buttom-buy"
+            onClick={() => handleAddToCart(coffee.id)}
+          >
             <ShoppingCartSimple weight="fill" />
           </CartButton>
         </div>

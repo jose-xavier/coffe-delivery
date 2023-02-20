@@ -42,4 +42,22 @@ export const CartButton = styled.button`
   background-color: ${(props) => props.theme.colors['yellow-100']};
   color: ${(props) => props.theme.colors['yellow-700']};
   border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+    font-weight: 700;
+    font-size: 0.75rem;
+    border-radius: 50%;
+    color: ${(props) => props.theme.colors['gray-100']};
+    background-color: ${(props) => props.theme.colors['yellow-700']};
+    position: absolute;
+    top: -12px;
+    right: -12px;
+  }
 `

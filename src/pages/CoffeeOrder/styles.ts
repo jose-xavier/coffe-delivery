@@ -2,16 +2,29 @@ import styled from 'styled-components'
 
 export const CoffeeOrderContainer = styled.div`
   width: 100%;
+  display: flex;
+  flex-direction: column;
   max-width: 28rem;
-  padding: 2.5rem;
+  margin-top: 2.5rem;
 
   div + div {
     margin-top: 1.5rem;
   }
 
   h3 {
-    margin-bottom: 3.5rem;
+    margin-bottom: 1rem;
   }
+`
+export const CoffeeItems = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`
+
+export const CoffeeOrderContent = styled.div`
+  padding: 2.5rem;
+  background: ${(props) => props.theme.colors['gray-200']};
+  border-radius: 6px 44px 6px 44px;
 `
 
 export const DescriptionValue = styled.div`
@@ -42,6 +55,7 @@ export const DescriptionValue = styled.div`
 `
 
 export const ConfirmOrderButton = styled.button`
+  font-size: 0.875rem;
   width: 100%;
   margin-top: 1.5rem;
   border-radius: 6px;
