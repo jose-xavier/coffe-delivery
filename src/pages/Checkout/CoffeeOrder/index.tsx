@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import { CoffeeContext } from '../../context/CoffeeContext'
-import { priceFormatted } from '../../utils/formatPrice'
-import { CoffeeItem } from '../Checkout/CoffeeItem'
+import { CoffeeContext } from '../../../context/CoffeeContext'
+import { priceFormatted } from '../../../utils/formatPrice'
+import { CoffeeItem } from '../../Checkout/CoffeeItem'
 import {
   CoffeeItems,
   CoffeeOrderContainer,
@@ -44,7 +44,7 @@ export function CoffeeOrder() {
           </div>
         </DescriptionValue>
 
-        <ConfirmOrderButton>CONFIRMAR PEDIDO</ConfirmOrderButton>
+        <ConfirmOrderButton type="submit">CONFIRMAR PEDIDO</ConfirmOrderButton>
       </CoffeeOrderContent>
     </CoffeeOrderContainer>
   )

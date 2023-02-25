@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 export const CheckoutContainer = styled.main`
-  display: flex;
-  gap: 2rem;
+  margin-bottom: 10rem;
+  form {
+    display: flex;
+    gap: 2rem;
+  }
 `
