@@ -126,7 +126,7 @@ export const PaymentInfo = styled.div`
   }
 
   div > p {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     color: ${(props) => props.theme.colors['gray-700']};
     line-height: 1.3;
   }
@@ -135,25 +135,25 @@ export const PaymentInfo = styled.div`
     display: flex;
     margin-top: 2rem;
     gap: 0.75rem;
-
-    button:hover {
-      border: 1px solid ${(props) => props.theme.colors['purple-300']};
-    }
   }
 `
 
-export const ButtonPayment = styled.button`
+export const ButtonPayment = styled.label`
   width: 11.5rem;
   display: flex;
+
   justify-content: flex-start;
-  gap: 0.5rem;
+  gap: 0.25em;
   align-items: center;
-  padding: 1rem 0.5rem;
+  padding: 1.25rem 0.75rem;
   font-size: 0.75rem;
   border-radius: 6px;
-  border: 0;
   color: ${(props) => props.theme.colors['gray-700']};
   background: ${(props) => props.theme.colors['gray-400']};
+
+  &:hover {
+    outline: 1px solid ${(props) => props.theme.colors['purple-300']};
+  }
 
   .icon {
     color: ${(props) => props.theme.colors['purple-300']};

@@ -5,7 +5,7 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react'
-import { useForm, FormProvider } from 'react-hook-form'
+import { useForm, FormProvider, useFormContext } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
 
@@ -17,7 +17,10 @@ import {
   PaymentInfo,
 } from './styles'
 import { CoffeeOrder } from '../CoffeeOrder'
+import { useContext } from 'react'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
+import { CoffeeContext } from '../../../context/CoffeeContext'
 
 const newDeliveryFormValidationSchema = zod.object({
   cep: zod.string().min(7, 'CEP precisa ter no no mínimo 7 caracteres'),
@@ -34,15 +37,23 @@ const newDeliveryFormValidationSchema = zod.object({
   paymentMethod: zod.enum(['credit', 'debit', 'money']),
 })
 
-type NewDeliveryFormData = zod.infer<typeof newDeliveryFormValidationSchema>
+export type NewDeliveryFormData = zod.infer<
+  typeof newDeliveryFormValidationSchema
+>
 
 export function DeliveryForm() {
+  const { resetCoffeeQuantityCart } = useContext(CoffeeContext)
   const newDeliveryForm = useForm<NewDeliveryFormData>({
     resolver: zodResolver(newDeliveryFormValidationSchema),
   })
 
-  function handleCoffeeSubmit(data: any) {
-    console.log(data)
+  const navigate = useNavigate()
+
+  function handleCoffeeSubmit(data: NewDeliveryFormData) {
+    navigate('/delivery', {
+      state: data,
+    })
+    resetCoffeeQuantityCart()
     toast.success('Pedido efetuado com sucesso')
   }
 

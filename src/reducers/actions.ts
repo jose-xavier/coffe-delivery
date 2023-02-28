@@ -46,3 +46,9 @@ export function resetItemQuantity(id: number) {
     },
   }
 }
+
+export function resetItemQuantityCart() {
+  return {
+    type: 'RESET_ITEM_QUANTITY_CART',
+  }
+}

@@ -130,6 +130,10 @@ export function coffesReducer(state: CoffeesState, action: any) {
 
       return { ...state, coffees: newCoffees }
     }
+
+    case 'RESET_ITEM_QUANTITY_CART':
+      return { ...state, coffeesCart: [] }
+
     default:
       return state
   }
